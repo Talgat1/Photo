@@ -62,10 +62,10 @@ namespace Photo
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            UpdateList();
+            Update();
         }
 
-        public void UpdateList()
+        public void Update()
         {
             imageList.ItemsSource = null;
             imageList.ItemsSource = App.Db.GetProjects();
@@ -77,7 +77,7 @@ namespace Photo
             {
                 App.db.SaveItem(new PhotoCopy(name.Text, impath));
                 DisplayAlert("", "Обьект успешно добавлен", "Ok");
-                UpdateList();
+                Update();
             }
             catch
             {
@@ -89,5 +89,7 @@ namespace Photo
         {
             Navigation.PushAsync(new Photografia((PhotoCopy)e.Item));
         }
+
+        
     }
 }
