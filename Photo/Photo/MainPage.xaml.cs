@@ -22,6 +22,7 @@ namespace Photo
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            
         }
 
         async void gallery_Clicked(object sender, EventArgs e)
@@ -82,6 +83,20 @@ namespace Photo
             catch
             {
                 DisplayAlert("", "Не удалось добавить обьект", "Ok");
+            }
+        }
+
+        private void SwipeItem_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var id = ((SwipeItem)sender).CommandParameter.ToString();
+                App.Db.DeleteItem(int.Parse(id));
+                Update();
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("", ex.Message, "ok");
             }
         }
 

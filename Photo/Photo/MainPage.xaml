@@ -19,13 +19,28 @@
 
         <StackLayout Margin="15, 20">
             <ScrollView>
-                <ListView x:Name="imageList" ItemTapped="image_ItemTapped">
+                <ListView x:Name="imageList"   ItemTapped="image_ItemTapped" HasUnevenRows="True" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="20"/>
-                                </StackLayout>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem
+                                                BackgroundColor="Red" Clicked="SwipeItem_Clicked" CommandParameter="{Binding Id}" IconImageSource="vector.png" Text="удалить" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="20"/>
+                                        <Frame BackgroundColor="#E8E8E8" >
+                                            <Image Source="{Binding Imagepath}" Margin="-20,-20,200,-20"></Image>
+                                        </Frame>
+
+                                    </StackLayout>
+
+                                </SwipeView>
+                                
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

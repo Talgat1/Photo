@@ -18,6 +18,11 @@ namespace Photo.DB
         {
             return db.Table<PhotoCopy>();
         }
+
+        public int DeleteItem(int id)
+        {
+            return db.Delete<PhotoCopy>(id);
+        }
         public int SaveItem(PhotoCopy photo)
         {
             if (photo.Id != 0)
